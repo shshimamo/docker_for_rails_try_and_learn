@@ -12,6 +12,10 @@ RUN bundle install ${BUNDLE_INSTALL_ARGS}
 COPY --from=node:10.15.3-stretch /usr/local/ /usr/local/
 COPY --from=node:10.15.3-stretch /opt/ /opt/
 
+# YarnでNodeパッケージをインストールする
+COPY package.json yarn.lock ./
+RUN yarn install
+
 # エントリーポイントを設定する
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh

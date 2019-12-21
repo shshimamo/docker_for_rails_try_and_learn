@@ -13,3 +13,6 @@ services:
 
     volumes:
       - .:/app
+      # /app/node_modulesに匿名ボリュームをマウントする
+      # node_modulesはイメージにあるものを使う
+      - /app/node_modules
