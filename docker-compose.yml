@@ -16,3 +16,9 @@ services:
       # /app/node_modulesに匿名ボリュームをマウントする
       # node_modulesはイメージにあるものを使う
       - /app/node_modules
+
+    # for pry-byebug
+    # docker attachできるように標準入力が仮想端末に繋がった状態にしておく
+    stdin_open: true
+    tty: true
+
