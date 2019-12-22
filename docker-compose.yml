@@ -26,6 +26,11 @@ services:
       # webpackのアセットをwebpack-dev-serverから取得する
       - WEBPACKER_DEV_SERVER_HOST=webpack
       - WEBPACKER_DEV_SERVER_PUBLIC=localhost:3035
+      # dbコンテナに接続する
+      - DATABASE_URL=postgresql://postgres:password@db/docker_for_rails_try_and_learn_development
+
+    depends_on:
+      - db
 
   webpack:
     build: .
@@ -39,3 +44,15 @@ services:
       - .:/app
       # node_modulesはイメージにあるものを使う
       - /app/node_modules
+
+  db:
+    image: postgres:11.2
+    environment:
+      - POSTGRES_DB=docker_for_rails_try_and_learn_development
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  # DBの格納先
+  db-data:
