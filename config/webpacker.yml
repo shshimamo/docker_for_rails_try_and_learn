@@ -75,6 +75,9 @@ development:
       'Access-Control-Allow-Origin': '*'
     watch_options:
       ignored: '**/node_modules/**'
+      # pollにtrueもしくは数値(ミリ秒)を指定するとポーリングで監視するようになる
+      # これは任意設定。Docker for Macなど仮想マシン経由でDockerを動かしている場合フィアルの変更がうまく検知されないことがあるのでその時にポーリングを使う
+      poll: true
 
 
 test:
