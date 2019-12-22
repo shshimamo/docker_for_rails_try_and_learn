@@ -3,10 +3,10 @@
 set -eu
 
 # Bundlerの依存関係をチェックしておく
-bundle check || true
+bundle check || bundle install
 
 # Yarnの依存関係をチェックしておく
-yarn check --integrity --silent || true
+yarn check --integrity --silent || bin/yarn install --frozen-lockfile
 
 # Railsサーバーを実行する場合PIDファイルがあれば削除しておく
 if [ "${1:-}" = rails -a "${2:-}" = server ]; then
