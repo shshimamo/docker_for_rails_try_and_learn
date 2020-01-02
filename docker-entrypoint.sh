@@ -15,4 +15,6 @@ if [ "${1:-}" = rails -a "${2:-}" = server ]; then
   fi
 fi
 
+# 引数無しで呼ばれた場合はDockerfileのCMD ["rails", "server", "-b", "0.0.0.0"]が実行される
+# 引数ありで呼ばれた場合はDockerfileのCMDは実行されず引数がここで実行される
 exec "$@"
